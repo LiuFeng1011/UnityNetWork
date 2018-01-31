@@ -1,0 +1,42 @@
+ty generated #
+
+iosclient/
+# =============== #
+[Tt]emp/
+[Oo]bj/
+UnityGenerated/
+[Bb]uild/
+[Ll]ibrary/
+UWP/
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.svd
+*.user
+*.unityproj
+*.tmp
+*.booproj
+
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+*.meta
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

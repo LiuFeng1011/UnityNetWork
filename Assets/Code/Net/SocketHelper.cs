@@ -72,7 +72,7 @@ public class SocketHelper : MonoBehaviour{
 		}  
 
 		//
-		RegisterResp.RegisterAll();
+		//RegisterResp.RegisterAll();
 	}
 
 	private void ConnectedCallback(IAsyncResult asyncConnect)  

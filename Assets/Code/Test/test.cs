@@ -28,7 +28,8 @@ public class test : MonoBehaviour {
 
 		if(CreateBtn(  "send"))  
 		{   
-			
+            TestReq req = new TestReq(1, "2");
+            req.Send();
 		}  
 
 	}
@@ -40,20 +41,13 @@ public class test : MonoBehaviour {
 	}
 
 	void Response(Resp r){
-		//PlayerResp resp = (PlayerResp)r;
+        TestResp resp = (TestResp)r;
 
-		//NetTools.Log("PlayerResponse type:" + resp.type);
-		//switch(resp.type){
-		//case NetProtocols.PLAYER_DATA:
-		//	break;
-		
-		//}
+        Debug.Log(resp.data);
 	}
 
 	public void ConnectCallBack(){
-		//NetTools.Log("ConnectCallBack");
-		//EntryGameRequest req = new EntryGameRequest(LoginManager.Uid,1,LoginManager.Token);
-		//req.Send();
+        Debug.Log("Connect success!");
 	}
 
 	public void TestCallBack(){

@@ -8,13 +8,17 @@ public class test : MonoBehaviour {
 	const int width = 150;
 
 	void Awake()
-	{
-        ProtoManager.Instance.AddRespDelegate(NetProtocols.TEST,Response);
+    {
+        ProtoManager.Instance.AddRespDelegate(NetProtocols.ENTRY_GAME, Response);
+        ProtoManager.Instance.AddRespDelegate(NetProtocols.TEST_A,Response);
+        ProtoManager.Instance.AddRespDelegate(NetProtocols.TEST_B, Response);
 	}
 	
 	void OnDisable()
-	{
-        ProtoManager.Instance.DelRespDelegate(NetProtocols.TEST,Response);
+    {
+        ProtoManager.Instance.DelRespDelegate(NetProtocols.ENTRY_GAME, Response);
+        ProtoManager.Instance.DelRespDelegate(NetProtocols.TEST_A,Response);
+        ProtoManager.Instance.DelRespDelegate(NetProtocols.TEST_B, Response);
 	}
 
 	int high;
@@ -23,15 +27,24 @@ public class test : MonoBehaviour {
 		high = 10;
 		if(CreateBtn( "connect"))  
 		{   
-			SocketHelper.GetInstance().Connect("ID",1,ConnectCallBack,null);
+            SocketHelper.GetInstance().Connect("192.168.1.91",9999,ConnectCallBack,null);
 		}  
+        if(CreateBtn(  "Entry Game"))  
+        {   
+            EntryGameReq req = new EntryGameReq(123);
+            req.Send();
+        } 
 
-		if(CreateBtn(  "send"))  
+		if(CreateBtn(  "sendA"))  
 		{   
-            TestReq req = new TestReq(1, "2");
+            TestAReq req = new TestAReq(1,9999999999999,"123abcd的");
             req.Send();
 		}  
-
+        if(CreateBtn(  "sendB"))  
+        {   
+            TestBReq req = new TestBReq();
+            req.Send();
+        }  
 	}
 
 	public bool CreateBtn(string btnname){
@@ -41,9 +54,15 @@ public class test : MonoBehaviour {
 	}
 
 	void Response(Resp r){
-        TestResp resp = (TestResp)r;
+        Debug.Log( " receive server msg : " + r.GetProtocol());
+        Debug.Log(NetProtocols.TEST_A);
+        if(r.GetProtocol() == NetProtocols.TEST_A){
+            TestAResp resp = (TestAResp)r;
+            Debug.Log("int : " + resp.testint);
+            Debug.Log("long : " + resp.testlong);
+            Debug.Log("string : " + resp.teststring);
+        }
 
-        Debug.Log(resp.data);
 	}
 
 	public void ConnectCallBack(){

@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestResp : Resp {
-    public string data;
+public class EntryGameResp : Resp {
 
     public override int GetProtocol()
     {
-        return NetProtocols.TEST;
+        return NetProtocols.ENTRY_GAME;
     }
 
     public override void Deserialize(DataStream reader)
     {
         base.Deserialize(reader);
-        data = reader.ReadString16();
     }
 }

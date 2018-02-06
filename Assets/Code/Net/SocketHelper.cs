@@ -36,6 +36,14 @@ public class SocketHelper : MonoBehaviour{
 		socketHelper = this;
 	}
 
+    /// <summary>
+    /// 连接服务器
+    /// </summary>
+    /// <returns>The connect.</returns>
+    /// <param name="serverIp">Server ip.</param>
+    /// <param name="serverPort">Server port.</param>
+    /// <param name="connectCallback">Connect callback.</param>
+    /// <param name="connectFailedCallback">Connect failed callback.</param>
     public void Connect(string serverIp,int serverPort,ConnectCallback connectCallback,ConnectCallback connectFailedCallback){
 		connectDelegate = connectCallback;
 		connectFailedDelegate = connectFailedCallback;
@@ -70,9 +78,7 @@ public class SocketHelper : MonoBehaviour{
 			thread.IsBackground = true;  
 			thread.Start();  
 		}  
-
-		//
-		//RegisterResp.RegisterAll();
+        RegisterResp.RegisterAll();
 	}
 
 	private void ConnectedCallback(IAsyncResult asyncConnect)  

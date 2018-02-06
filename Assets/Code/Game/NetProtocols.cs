@@ -3,10 +3,8 @@ using System.Collections;
 
 public class NetProtocols    
 {
-	//心跳
-	public const int HEART = 0x00000000;
-
-	//test
-	public const int TEST = 0x0FFFFFFF;
+    public static int ENTRY_GAME = 0x00000100;//登录游戏
+    public static int TEST_A = 0x10000001;
+    public static int TEST_B = 0x10000002;
 
 }

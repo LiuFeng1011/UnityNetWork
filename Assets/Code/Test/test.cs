@@ -12,6 +12,12 @@ public class test : MonoBehaviour {
         ProtoManager.Instance.AddRespDelegate(NetProtocols.ENTRY_GAME, Response);
         ProtoManager.Instance.AddRespDelegate(NetProtocols.TEST_A,Response);
         ProtoManager.Instance.AddRespDelegate(NetProtocols.TEST_B, Response);
+
+        int width = (int)(Screen.currentResolution.width * 0.3f);
+        int height = (int)(Screen.currentResolution.height * 0.3f);
+        Debug.Log("width : " + width + " Screen.currentResolution.width : " + Screen.currentResolution.width);
+        Debug.Log("height : " + height + " Screen.currentResolution.height : " + Screen.currentResolution.height);
+        Screen.SetResolution(width, height, true);
 	}
 	
 	void OnDisable()
